@@ -14,7 +14,7 @@ $CONFIG = '{"lang":"zh-CN","error_reporting":false,"show_hidden":false,"hide_Col
 define('VERSION', '2.5.3');
 
 //Application Title
-define('APP_TITLE', 'Beauty File Manager');
+define('APP_TITLE', 'Beauty Directory');
 
 // --- EDIT BELOW CONFIGURATION CAREFULLY ---
 
