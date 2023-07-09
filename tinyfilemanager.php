@@ -1,6 +1,6 @@
 <?php
 //Default Configuration
-$CONFIG = '{"lang":"en","error_reporting":false,"show_hidden":false,"hide_Cols":false,"theme":"light"}';
+$CONFIG = '{"lang":"zh-CN","error_reporting":false,"show_hidden":false,"hide_Cols":false,"theme":"light"}';
 
 /**
  * H3K | Tiny File Manager V2.5.3
@@ -14,7 +14,7 @@ $CONFIG = '{"lang":"en","error_reporting":false,"show_hidden":false,"hide_Cols":
 define('VERSION', '2.5.3');
 
 //Application Title
-define('APP_TITLE', 'Tiny File Manager');
+define('APP_TITLE', 'Beauty File Manager');
 
 // --- EDIT BELOW CONFIGURATION CAREFULLY ---
 
@@ -28,7 +28,7 @@ $use_auth = true;
 // Generate secure password hash - https://tinyfilemanager.github.io/docs/pwd.html
 $auth_users = array(
     'admin' => '$2y$10$/K.hjNr84lLNDt8fTXjoI.DBp6PpeyoJ.mGwrrLuCZfAwfSAGqhOW', //admin@123
-    'user' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO' //12345
+    //'user' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO' //12345
 );
 
 // Readonly users
@@ -94,12 +94,26 @@ $allowed_upload_extensions = '';
 // Favicon path. This can be either a full url to an .PNG image, or a path based on the document root.
 // full path, e.g http://example.com/favicon.png
 // local path, e.g images/icons/favicon.png
-$favicon_path = '';
+$favicon_path = 'favicon.ico';
 
 // Files and folders to excluded from listing
 // e.g. array('myfile.html', 'personal-folder', '*.php', ...)
-$exclude_items = array();
-
+//$exclude_items = array();
+	//需要忽略的目录
+$exclude_items	= array(
+		".",
+		".git",
+		".well-known",
+		".user.ini",
+		"php.ini",
+		"cgi-bin",
+		"logo.png",
+		"favicon.ico",
+		"translation.json",
+		".htaccess",
+		"index.php",
+		"tinyfilemanager.php"
+	);
 // Online office Docs Viewer
 // Availabe rules are 'google', 'microsoft' or false
 // Google => View documents using Google Docs Viewer
@@ -350,9 +364,13 @@ if ($use_auth) {
             <div class="container h-100">
                 <div class="row justify-content-md-center h-100">
                     <div class="card-wrapper">
+                        <div class=" text-center">
+                            <img border=0 width=200  height=200 src="logo.png" >
+                        </div>
                         <div class="card fat <?php echo fm_get_theme(); ?>">
                             <div class="card-body">
                                 <form class="form-signin" action="" method="post" autocomplete="off">
+                        <!--
                                     <div class="mb-3">
                                        <div class="brand">
                                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" M1008 width="100%" height="80px" viewBox="0 0 238.000000 140.000000" aria-label="H3K Tiny File Manager">
@@ -367,6 +385,7 @@ if ($use_auth) {
                                         </div>
                                     </div>
                                     <hr />
+                         -->
                                     <div class="mb-3">
                                         <label for="fm_usr" class="pb-2"><?php echo lng('Username'); ?></label>
                                         <input type="text" class="form-control" id="fm_usr" name="fm_usr" required autofocus>
@@ -390,8 +409,12 @@ if ($use_auth) {
                             </div>
                         </div>
                         <div class="footer text-center">
+<!--                    				
                             &mdash;&mdash; &copy;
                             <a href="https://tinyfilemanager.github.io/" target="_blank" class="text-decoration-none text-muted" data-version="<?php echo VERSION; ?>">CCP Programmers</a> &mdash;&mdash;
+-->
+	                        </br>
+                       		 <p align="center" style='text-align:center'> Copyright &copy;<?php echo date("Y")." "; ?>  <?php echo APP_TITLE; ?></p>
                         </div>
                     </div>
                 </div>
@@ -2232,7 +2255,9 @@ $tableTheme = (FM_THEME == "dark") ? "text-white bg-dark table-dark" : "bg-white
                     <a href="javascript:document.getElementById('a-copy').click();" class="btn btn-small btn-outline-primary btn-2"><i class="fa fa-files-o"></i> <?php echo lng('Copy') ?> </a></li>
             </ul>
         </div>
+        <!--
         <div class="col-3 d-none d-sm-block"><a href="https://tinyfilemanager.github.io" target="_blank" class="float-right text-muted">Tiny File Manager <?php echo VERSION; ?></a></div>
+        -->
         <?php else: ?>
             <div class="col-12"><a href="https://tinyfilemanager.github.io" target="_blank" class="float-right text-muted">Tiny File Manager <?php echo VERSION; ?></a></div>
         <?php endif; ?>
